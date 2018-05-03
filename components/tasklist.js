@@ -45,6 +45,12 @@ export default class TaskList extends React.Component {
     return <TaskRow todo={todo} />;
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { todos } = nextProps.todosContainer;
+    const dataSource = this.state.dataSource.cloneWithRows(todos);
+    this.setState({ dataSource });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -57,7 +63,9 @@ export default class TaskList extends React.Component {
         <CustomizeButtom
           caption="Add"
           styleButton={styles.button}
-          onPressButton={() => this.props.insertTodo()}
+          onPressButton={() =>
+            this.props.insertTodo({ task: 'Estudar Java Script' })
+          }
         />
       </View>
     );
