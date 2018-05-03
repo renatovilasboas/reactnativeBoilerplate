@@ -14,6 +14,6 @@ const mapDispatchToProps = {
   insertTodo,
 };
 
-const mapStateToProps = (state) => ({ todosContainer: state.toJS().todos });
+const mapStateToProps = (state) => ({ todosContainer: state.todos });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodosContainer);
