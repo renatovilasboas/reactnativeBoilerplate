@@ -41,14 +41,14 @@ export default class TaskList extends React.Component {
     };
   }
 
-  renderRow(todo) {
-    return <TaskRow todo={todo} />;
-  }
-
   componentWillReceiveProps(nextProps) {
     const { todos } = nextProps.todosContainer;
     const dataSource = this.state.dataSource.cloneWithRows(todos);
     this.setState({ dataSource });
+  }
+
+  renderRow(todo) {
+    return <TaskRow todo={todo} />;
   }
 
   render() {
