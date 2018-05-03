@@ -8,7 +8,7 @@ const TaskRow = ({ todo }) => (
   </View>
 );
 
-const styles = StyleSheet.flatten({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     borderWidth: 1,

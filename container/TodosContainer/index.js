@@ -5,6 +5,17 @@ import { insertTodo } from './actions';
 
 /** eslint-disable */
 class TodosContainer extends React.Component {
+  static navigationOptions = {
+    title: 'Tasks',
+    headerStyle: {
+      backgroundColor: '#333',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
+
   render() {
     return <TaskList {...this.props} />;
   }
