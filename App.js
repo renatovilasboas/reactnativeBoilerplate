@@ -1,28 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import TaskList from './components/tasklist';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import TodosContainer from './container/TodosContainer/index';
 
-export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      pressed: false,
-      todos: [
-        { task: 'Aprender React' },
-        { task: 'Aprender React Native' },
-        { task: 'Aprender React Boilerplate' },
-      ],
-    };
-  }
+const initialState = {};
+const store = configureStore(initialState);
 
-  onPressButton() {
-    const pressed = !this.state.pressed;
-    this.setState({ pressed }, () => console.log('Alterou!'));
-  }
+const App = () => (
+  <Provider store={store}>
+    <TodosContainer />
+  </Provider>
+);
 
-  render() {
-    return (
-      <TaskList todos={this.state.todos} onAddStarted={(e) => console.log(e)} />
-    );
-  }
-}
+export default App;

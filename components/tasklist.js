@@ -35,8 +35,9 @@ export default class TaskList extends React.Component {
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
 
+    const { todos } = this.props.todosContainer;
     this.state = {
-      dataSource: ds.cloneWithRows(this.props.todos),
+      dataSource: ds.cloneWithRows(todos),
     };
   }
 
@@ -48,7 +49,7 @@ export default class TaskList extends React.Component {
     return (
       <View style={styles.container}>
         <ListView
-          key={this.props.todos}
+          key={this.props.todosContainer.todos}
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
         />
@@ -56,7 +57,7 @@ export default class TaskList extends React.Component {
         <CustomizeButtom
           caption="Add"
           styleButton={styles.button}
-          onPressButton={() => this.props.onAddStarted()}
+          onPressButton={() => this.props.insertTodo()}
         />
       </View>
     );
@@ -64,6 +65,6 @@ export default class TaskList extends React.Component {
 }
 
 TaskList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onAddStarted: PropTypes.func.isRequired,
+  insertTodo: PropTypes.func.isRequired,
+  todosContainer: PropTypes.object.isRequired,
 };
