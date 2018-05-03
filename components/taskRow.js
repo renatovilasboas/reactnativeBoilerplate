@@ -1,10 +1,13 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
 
 const TaskRow = ({ todo }) => (
   <View style={styles.container}>
     <Text style={styles.label}>{todo.task}</Text>
+    <TouchableHighlight style={styles.doneButton}>
+      <Text>Done</Text>
+    </TouchableHighlight>
   </View>
 );
 
@@ -16,7 +19,7 @@ const styles = StyleSheet.create({
     padding: 10,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     marginBottom: 10,
     marginLeft: 10,
     marginRight: 10,
@@ -26,6 +29,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '300',
     width: '100%',
+  },
+  doneButton: {
+    borderRadius: 5,
+    backgroundColor: '#EAEAEA',
+    padding: 5,
+    marginLeft: -50,
+    justifyContent: 'center',
   },
 });
 
