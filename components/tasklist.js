@@ -59,9 +59,8 @@ export default class TaskList extends React.Component {
         <ListView
           key={this.props.todosContainer.todos}
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)}
+          renderRow={(rowData) => this.renderRow(rowData)}
         />
-
         <CustomizeButtom
           caption="Add"
           styleButton={styles.button}

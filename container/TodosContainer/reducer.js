@@ -1,4 +1,4 @@
-import { fromJS, Map } from 'immutable';
+import { fromJS } from 'immutable';
 import { INSERT_TODO, REMOVE_TODO } from './constants';
 
 const initialState = fromJS({
