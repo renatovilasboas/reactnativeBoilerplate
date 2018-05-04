@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, ListView } from 'react-native';
 import PropTypes from 'prop-types';
-import TaskRow from './taskRow';
+import TaskRow from './taskRow/component';
 import CustomizeButtom from './CustomizeButtom';
 
 const styles = {
   container: {
-    paddingTop: 40,
+    paddingTop: 0,
     backgroundColor: '#F7F7F7',
     flex: 1,
     justifyContent: 'flex-start',

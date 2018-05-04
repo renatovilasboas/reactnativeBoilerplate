@@ -1,15 +1,16 @@
 import React from 'react';
 import { Text, StyleSheet, View, TouchableHighlight } from 'react-native';
 import PropTypes from 'prop-types';
+import Render from './Render';
 
-const TaskRow = ({ todo, removeTodo }) => (
+/* const TaskRow = ({ todo, removeTodo }) => (
   <View style={styles.container}>
     <Text style={styles.label}>{todo.task}</Text>
     <TouchableHighlight style={styles.doneButton} onPress={() => removeTodo()}>
       <Text>Done</Text>
     </TouchableHighlight>
   </View>
-);
+); */
 
 const styles = StyleSheet.create({
   container: {
@@ -30,14 +31,13 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     width: '100%',
   },
-  doneButton: {
-    borderRadius: 5,
-    backgroundColor: '#EAEAEA',
-    padding: 5,
-    marginLeft: -50,
-    justifyContent: 'center',
-  },
 });
+
+class TaskRow extends React.Component {
+  render() {
+    return Render(styles, this.props.todo, this.props.removeTodo);
+  }
+}
 
 TaskRow.propTypes = {
   removeTodo: PropTypes.func.isRequired,
