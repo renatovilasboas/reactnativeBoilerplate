@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
 import PropTypes from 'prop-types';
 import CustomizeButtom from './CustomizeButtom';
 
-const styles = StyleSheet.flatten({
+const styles = {
   container: {
     paddingBottom: 50,
     backgroundColor: '#F7F7F7',
@@ -47,7 +47,7 @@ const styles = StyleSheet.flatten({
     padding: 15,
     borderRadius: 3,
   },
-});
+};
 
 class InsertRow extends React.Component {
   constructor() {
