@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TaskRow from './taskRow';
 import CustomizeButtom from './CustomizeButtom';
 
-const styles = StyleSheet.flatten({
+const styles = {
   container: {
     paddingTop: 40,
     backgroundColor: '#F7F7F7',
@@ -25,7 +25,7 @@ const styles = StyleSheet.flatten({
     fontSize: 20,
     fontWeight: '600',
   },
-});
+};
 
 export default class TaskList extends React.Component {
   constructor(props, context) {
@@ -39,6 +39,12 @@ export default class TaskList extends React.Component {
     this.state = {
       dataSource: ds.cloneWithRows(todos),
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { todos } = nextProps.todosContainer;
+    const dataSource = this.state.dataSource.cloneWithRows(todos);
+    this.setState({ dataSource });
   }
 
   renderRow(todo) {
@@ -57,7 +63,11 @@ export default class TaskList extends React.Component {
         <CustomizeButtom
           caption="Add"
           styleButton={styles.button}
-          onPressButton={() => this.props.insertTodo()}
+          onPressButton={() =>
+            this.props.navigation.navigate('Task', {
+              ...this.props,
+            })
+          }
         />
       </View>
     );
@@ -65,6 +75,6 @@ export default class TaskList extends React.Component {
 }
 
 TaskList.propTypes = {
-  insertTodo: PropTypes.func.isRequired,
   todosContainer: PropTypes.object.isRequired,
+  navigation: PropTypes.object.isRequired,
 };

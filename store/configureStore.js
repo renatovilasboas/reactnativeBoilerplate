@@ -1,7 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
 
-export default function configureStore() {
-  const store = createStore(rootReducer);
-  return store;
-}
+const configureStore = () =>
+  createStore(rootReducer, composeWithDevTools(applyMiddleware()));
+
+export default configureStore;
