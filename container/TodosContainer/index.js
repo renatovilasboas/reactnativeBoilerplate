@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TaskList from '../../components/tasklist';
 import { insertTodo, removeTodo } from './actions';
+import todosContainerSelector from './selector';
 
 /** eslint-disable */
 class TodosContainer extends React.Component {
@@ -27,7 +28,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  todosContainer: state.todosContainer.toJS(),
+  todosContainer: todosContainerSelector(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodosContainer);

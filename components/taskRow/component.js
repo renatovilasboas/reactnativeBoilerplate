@@ -31,6 +31,13 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     width: '100%',
   },
+  doneButton: {
+    borderRadius: 5,
+    backgroundColor: '#EAEAEA',
+    padding: 5,
+    marginLeft: -50,
+    justifyContent: 'center',
+  },
 });
 
 class TaskRow extends React.Component {

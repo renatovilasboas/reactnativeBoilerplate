@@ -8,9 +8,9 @@ const IOSstyles = {
     justifyContent: 'center',
   },
   swipe: {
-    marginBottom: 0,
+    marginBottom: 10,
     borderWidth: 0.5,
-    borderColor: '#E7E7E7',
+    borderColor: '#fff',
   },
 };
 
@@ -27,7 +27,7 @@ export default function render(styles, todo, removeTodo) {
         }
         right={
           <Button
-            style={{ backgroundColor: '#05A5D1' }}
+            style={{ backgroundColor: '#05A5D1', marginBottom: 10 }}
             danger
             onPress={() => removeTodo()}
           >
