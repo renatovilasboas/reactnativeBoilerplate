@@ -1,18 +1,13 @@
 import React from 'react';
-import { Text, StyleSheet, View, TouchableHighlight } from 'react-native';
+import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import Render from './render';
 
-// const TaskRow = ({ todo, removeTodo }) => (
-//   <View style={styles.container}>
-//     <Text style={styles.label}>{todo.task}</Text>
-//     <TouchableHighlight
-//       style={styles.doneButton}
-//       onPress={() => removeTodo(todo)}
-//     >
-//       <Text>Done</Text>
-//     </TouchableHighlight>
-//   </View>
-// );
+class TaskRow extends React.Component {
+  render() {
+    return Render(styles, this.props.todo, this.props.removeTodo);
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
