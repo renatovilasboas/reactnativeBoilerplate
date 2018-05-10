@@ -19,7 +19,7 @@ export default function render(styles, todo, removeTodo) {
     <Content scrollEnabled={false}>
       <SwipeRow
         style={IOSstyles.swipe}
-        rightOpenValue={-75}
+        rightOpenValue={-100}
         body={
           <View style={[styles.container, IOSstyles.row]}>
             <Text style={styles.label}>{`${todo.task}`}</Text>

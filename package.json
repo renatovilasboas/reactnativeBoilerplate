@@ -12,7 +12,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-react-native": "^3.2.1",
-    "jest-expo": "26.0.0",
+    "jest-expo": "^27.0.1",
     "react-native-debugger-open": "^0.3.17",
     "react-native-scripts": "1.13.2",
     "react-test-renderer": "16.3.0-alpha.1"
@@ -27,7 +27,10 @@
     "postinstall": "rndebugger-open --expo"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
+    ]
   },
   "dependencies": {
     "expo": "^26.0.0",
