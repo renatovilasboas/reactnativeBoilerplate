@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableHighlight, Image, Animated } from 'react-native';
 
-export default function render(styles, todo, removeTodo) {
+export default function render(styles, todo, doneTodo) {
   const doneAnimation = new Animated.ValueXY();
 
   const localStyle = {
@@ -27,7 +27,7 @@ export default function render(styles, todo, removeTodo) {
         y: 0,
       },
     }).start();
-    removeTodo();
+    doneTodo();
   }
 
   return (

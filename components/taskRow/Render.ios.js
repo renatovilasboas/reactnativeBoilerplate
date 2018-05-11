@@ -14,7 +14,7 @@ const IOSstyles = {
   },
 };
 
-export default function render(styles, todo, removeTodo) {
+export default function render(styles, todo, doneTodo) {
   return (
     <Content scrollEnabled={false}>
       <SwipeRow
@@ -29,7 +29,7 @@ export default function render(styles, todo, removeTodo) {
           <Button
             style={{ backgroundColor: '#05A5D1', marginBottom: 10 }}
             danger
-            onPress={() => removeTodo()}
+            onPress={() => doneTodo()}
           >
             <Icon active name="trash" />
           </Button>

@@ -50,13 +50,6 @@ const styles = {
 };
 
 class InsertRow extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      task: '',
-    };
-  }
-
   static navigationOptions = {
     title: 'Add task',
     headerStyle: {
@@ -68,8 +61,15 @@ class InsertRow extends React.Component {
     },
   };
 
+  constructor() {
+    super();
+    this.state = {
+      task: '',
+    };
+  }
+
   render() {
-    const { insertTodo } = this.props.navigation.state.params;
+    const { insertTodo, filterTodo, done } = this.props.navigation.state.params;
     return (
       <View style={styles.container}>
         <TextInput
@@ -83,6 +83,7 @@ class InsertRow extends React.Component {
           styleButton={styles.buttonAdd}
           onPressButton={() => {
             insertTodo({ task: this.state.task });
+            filterTodo(done);
             this.props.navigation.goBack();
           }}
         />

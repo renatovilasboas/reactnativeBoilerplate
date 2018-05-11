@@ -8,9 +8,10 @@ test('TaskRow renders correctly', () => {
 
   // Act
   const tree = renderer
-    .create(<TaskRow todo={todo} removeTodo={jest.fn} />)
+    .create(<TaskRow todo={todo} doneTodo={jest.fn} />)
     .toJSON();
 
   // Assert
   expect(tree).toMatchSnapshot();
+  expect(tree.children.length).toBe(1);
 });

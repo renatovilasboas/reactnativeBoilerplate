@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, StyleSheet, View, TouchableHighlight } from 'react-native';
+import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+/* eslint-disable line */
 import Render from './Render';
 
 /* const TaskRow = ({ todo, removeTodo }) => (
@@ -42,12 +43,12 @@ const styles = StyleSheet.create({
 
 class TaskRow extends React.Component {
   render() {
-    return Render(styles, this.props.todo, this.props.removeTodo);
+    return Render(styles, this.props.todo, this.props.doneTodo);
   }
 }
 
 TaskRow.propTypes = {
-  removeTodo: PropTypes.func.isRequired,
+  doneTodo: PropTypes.func.isRequired,
   todo: PropTypes.shape({
     task: PropTypes.string.isRequired,
   }).isRequired,

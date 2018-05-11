@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import TaskList from '../../components/tasklist';
-import { insertTodo, removeTodo } from './actions';
+import { insertTodo, doneTodo, filterTodo } from './actions';
 import todosContainerSelector from './selector';
 
 /** eslint-disable */
@@ -24,7 +24,8 @@ class TodosContainer extends React.Component {
 
 const mapDispatchToProps = {
   insertTodo,
-  removeTodo,
+  doneTodo,
+  filterTodo,
 };
 
 const mapStateToProps = (state) => ({

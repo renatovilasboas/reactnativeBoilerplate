@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ListView } from 'react-native';
+import { View, ListView, Switch, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import TaskRow from './taskRow/component';
 import CustomizeButtom from './CustomizeButtom';
@@ -25,6 +25,13 @@ const styles = {
     fontSize: 20,
     fontWeight: '600',
   },
+  switch: {
+    marginTop: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 };
 
 export default class TaskList extends React.Component {
@@ -35,29 +42,58 @@ export default class TaskList extends React.Component {
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
 
-    const { todos } = this.props.todosContainer;
+    const { filtered } = this.props.todosContainer;
     this.state = {
-      dataSource: ds.cloneWithRows(todos),
+      dataSource: ds.cloneWithRows(filtered),
+      done: false,
     };
+
+    this.props.filterTodo(this.state.done);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { todos } = nextProps.todosContainer;
-    const dataSource = this.state.dataSource.cloneWithRows(todos);
+    const { filtered } = nextProps.todosContainer;
+    const dataSource = this.state.dataSource.cloneWithRows(filtered);
     this.setState({ dataSource });
   }
 
   renderRow(todo) {
     return (
-      <TaskRow todo={todo} removeTodo={() => this.props.removeTodo(todo)} />
+      <TaskRow
+        todo={todo}
+        doneTodo={() => {
+          this.props.doneTodo(todo);
+          this.props.filterTodo(this.state.done);
+        }}
+      />
     );
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.switch}>
+          <View style={{ margin: 15 }}>
+            <Switch
+              value={this.state.done}
+              onValueChange={() =>
+                this.setState(
+                  {
+                    done: !this.state.done,
+                  },
+                  () => {
+                    this.props.filterTodo(this.state.done);
+                  }
+                )
+              }
+            />
+          </View>
+          <View>
+            <Text>{this.state.done ? 'Feitos' : 'Pendentes'}</Text>
+          </View>
+        </View>
         <ListView
-          key={this.props.todosContainer.todos}
+          key={this.props.todosContainer.filtered}
           dataSource={this.state.dataSource}
           renderRow={(rowData) => this.renderRow(rowData)}
         />
@@ -67,6 +103,7 @@ export default class TaskList extends React.Component {
           onPressButton={() =>
             this.props.navigation.navigate('Task', {
               ...this.props,
+              ...{ done: this.state.done },
             })
           }
         />
@@ -78,5 +115,6 @@ export default class TaskList extends React.Component {
 TaskList.propTypes = {
   todosContainer: PropTypes.object.isRequired,
   navigation: PropTypes.object.isRequired,
-  removeTodo: PropTypes.func.isRequired,
+  doneTodo: PropTypes.func.isRequired,
+  filterTodo: PropTypes.func.isRequired,
 };
